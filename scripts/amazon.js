@@ -1,7 +1,9 @@
 //we generated the html below and now its time to save
 //the products variable will be coming from the file
 //this is how real world html works we save the data into a file and then generate the file 
-import {cart} from '../data/cart.js' //..means folder outside current folder
+import {cart} from '../data/cart.js'
+import {products} from '../data/products.js'
+//..means folder outside current folder
 //rules for modules, put all module at the top of file
 //also modeules dont work if we open html file directly, we need to use liver server
 //benefits of modeules is it helps us avoid naming conflicts
