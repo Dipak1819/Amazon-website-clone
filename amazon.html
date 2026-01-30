@@ -56,8 +56,16 @@
         
       </div>
     </div>
-    <script src="data/cart.js"></script>
+     
     <script src="data/products.js"></script>
-    <script src="scripts/amazon.js"></script>
+    <script type="module" src="scripts/amazon.js">//type="moduel" enable this file get variable out of other file</script> 
+
+    <!-- when we have two variable with same name we cant use that in all the js file like if we use cart in cart.js
+     then we cant use variable cart in any of the js file 
+     
+     so to solve that we use a feature called modules, we contain the vairables in modules so that it doesnt conflict with
+     amazon.js file-->
+
+     <!-- to create a module , we create a file write the code there, dont load the file with script-->
   </body>
 </html>
