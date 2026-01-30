@@ -1,8 +1,9 @@
 //we generated the html below and now its time to save
 //the products variable will be coming from the file
 //this is how real world html works we save the data into a file and then generate the file 
-import {cart} from '../data/cart.js'
+import {cart,addToCart} from '../data/cart.js'
 import {products} from '../data/products.js'
+
 //..means folder outside current folder
 //rules for modules, put all module at the top of file
 //also modeules dont work if we open html file directly, we need to use liver server
@@ -72,34 +73,22 @@ products.forEach((product)=>{  //it takes each object saves it in product and ru
 
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML
-document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
-    button.addEventListener('click',()=>{
-       const productId=button.dataset.productId//dataset gives all the data attribtue attach to element
-       //name gets converted from kabab case to camel case product-name to productName
-       let matchingItem;
-       cart.forEach((item)=>{
-        if (productId===item.productId){
-            matchingItem=item;
-        }
-       })
 
-       if(matchingItem){
-        matchingItem.quantity+=1;
-       }
-       else{
-        cart.push({
-            productId: productId,
-            quantity: 1
-           })
-       }
-
-       let cartQuantity=0
-       cart.forEach((item)=>{
-        cartQuantity+=item.quantity
+function updateCartQuantity(){
+  let cartQuantity=0
+       cart.forEach((cartItem)=>{
+        cartQuantity+=cartItem.quantity
        })
 
        document.querySelector('.js-cart-quantity').innerHTML=cartQuantity
        
+}
+document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
+    button.addEventListener('click',()=>{
+       const productId=button.dataset.productId//dataset gives all the data attribtue attach to element
+       //name gets converted from kabab case to camel case product-name to productName
+       addToCart(productId)
+       updateCartQuantity()
       
     })
 })
