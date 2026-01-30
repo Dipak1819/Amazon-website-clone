@@ -3,6 +3,7 @@
 //this is how real world html works we save the data into a file and then generate the file 
 import {cart,addToCart} from '../data/cart.js'
 import {products} from '../data/products.js'
+import { formatCurrency } from './utils/money.js';
 
 //..means folder outside current folder
 //rules for modules, put all module at the top of file
@@ -37,7 +38,7 @@ products.forEach((product)=>{  //it takes each object saves it in product and ru
           </div>
 
           <div class="product-price">
-            ${(product.priceCents / 100).toFixed(2)}
+            $${formatCurrency(product.priceCents)}
           </div>
 
           <div class="product-quantity-container">
