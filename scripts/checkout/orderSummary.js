@@ -4,6 +4,7 @@ import {products,getProduct} from '../../data/products.js'
 import {formatCurrency} from '../utils/money.js'
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js'
+import { renderPaymentSummary } from './paymentSummary.js'
 //this is new syntax, we use it when we only want to use one thing from source like only one miport
 //gives us an object having current dayte and time
 //external libraries generally have documentation we use to see how do we use it
@@ -130,7 +131,7 @@ cart.forEach((cartItem)=>{
       link.addEventListener('click',()=>{
           const productId = link.dataset.productId
           removeFromCart(productId)
-
+          renderPaymentSummary()
           const container=document.querySelector(`.js-cart-item-container-${productId}`)
           container.remove()
       })
@@ -141,6 +142,7 @@ cart.forEach((cartItem)=>{
       const {productId,deliveryOptionId}=element.dataset  //shorthand property
       updateDeliveryOption(productId,deliveryOptionId)
       renderOrderSummary()
+      renderPaymentSummary()
     })
   })
 
