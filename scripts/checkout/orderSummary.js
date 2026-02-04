@@ -21,12 +21,21 @@ cart.forEach((cartItem)=>{
       const productId=cartItem.productId
       //now we use the productId to search for full product which is inside our products.js file inside products array
       const matchingProduct =getProduct(productId)
+      if (!matchingProduct){
+        console.warn('Product not found for cart item:', productId, cartItem)
+        removeFromCart(productId)
+        return
+      }
 
       
       const deliveryOptionId=cartItem.deliveryOptionId
       deliveryOptionId
 
-      const deliveryOption=getDeliveryOption(deliveryOptionId)
+      let deliveryOption=getDeliveryOption(deliveryOptionId)
+      if (!deliveryOption){
+        deliveryOption = deliveryOptions[0]
+        updateDeliveryOption(productId, deliveryOption.id)
+      }
       
       const today=dayjs()
         const deliveryDate=today.add(
