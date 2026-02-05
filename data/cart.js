@@ -1,4 +1,8 @@
-export let cart=JSON.parse(localStorage.getItem('cart') )//take one string name of what we saved earlier
+export let cart;
+
+loadFromStorage()
+export function loadFromStorage(){
+    cart=JSON.parse(localStorage.getItem('cart') )//take one string name of what we saved earlier
     //first whn we load the webpage we might not have anything in cart so we need to give default value
 
     if (!cart){
@@ -14,6 +18,8 @@ export let cart=JSON.parse(localStorage.getItem('cart') )//take one string name 
         }
         ]
     }
+
+}
 
 
 function saveToStorage(){

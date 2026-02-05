@@ -1,4 +1,4 @@
-import {formatCurrency} from '../scripts/utils/money.js'
+import {formatCurrency} from '../../scripts/utils/money.js'
 
 describe('test suite: formatCurrency',()=>{  //describe is a function provided by jasmine which indicate its a suite
     it('converts cents into dollars',()=>{
@@ -14,4 +14,6 @@ describe('test suite: formatCurrency',()=>{  //describe is a function provided b
     }
     )
 })
+
+
 
